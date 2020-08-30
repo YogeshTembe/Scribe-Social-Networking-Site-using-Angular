@@ -1,0 +1,40 @@
+<div class="row background">
+    <div class="offset-sm-4 col-sm-4">
+        <div class="card text-blank">
+            <div class="card-body">
+                <div class="card-title text-center">
+                    <h5>Login</h5>
+
+                </div>
+                <div class="card-text">
+                 <form [formGroup]="myform" (ngSubmit)="onSubmit(myform)">                    
+                        <div class="form-group">
+                        <input type="email" placeholder="Enter your email" class="form-control" name="email" [formControl]="myform.controls['email']">
+
+                    </div>
+                    <div class="alert alert-danger" *ngIf="!myform.controls['email'].valid && myform.controls['email'].touched">
+                        Email required
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Enter password" class="form-control" name="password" [formControl]="myform.controls['password']">
+
+                    </div>
+                    <div class="alert alert-danger" *ngIf="!myform.controls['password'].valid && myform.controls['password'].touched">
+                        password required
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-block btn-success round" [disabled]="!myform.valid">Login</button>
+                    </div>
+                </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-success" *ngIf="message.length > 0">
+            you have been successfully logged in 
+        </div>
+        <div class="alert alert-danger" *ngIf="userError">
+           {{userError.message}}
+        </div>
+    </div>
+</div>
